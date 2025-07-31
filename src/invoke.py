@@ -1,62 +1,53 @@
-import requests
-from langchain.chat_models import init_chat_model # funcion para usar modelos
-from langchain_core.messages import HumanMessage # este es nuestro prompt
-import os # funcion de utilidades
-import pandas as pd
-import airflow.models import Variable
-#importar el dataset y cambiar los evaluation propmpts 
+from langchain.chat_models import ChatOpenAI
+import google.generativeai as genai
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
 
-def call_deepseek():
-    URL = 'https://openrouter.ai/api/v1'
-    api_key = Variable.get("openrouter_api_key", default_var=None)
-    if not api_key:
-        print("Papu papu no hay variable open router en call_deepseek papu")
-        return
+load_dotenv()
 
-    connection_parameters = {
-        'openai_api_base': URL,
-        'openai_api_key': api_key
+# Leer las API keys desde variables de entorno (cargadas por Docker)
+openai_api_key = os.getenv("OPENROUTER_API_KEY")
+google_api_key = os.getenv("GOOGLE_API_KEY")
+deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
+
+if not all([openai_api_key, google_api_key, deepseek_api_key]):
+    raise ValueError("Faltan una o más API Keys en las variables de entorno.")
+
+# ---------- GPT-4o via OpenRouter ----------
+def init_chatgpt_openrouter():
+    return ChatOpenAI(
+        openai_api_key=openai_api_key,
+        openai_api_base="https://openrouter.ai/api/v1",
+        model_name="openai/chatgpt-4o-latest"
+    )
+
+#----------- Claude via OpenRouter ----------
+def init_claude_openrouter(model_name="anthropic/claude-3-sonnet"):
+    return ChatOpenAI(
+        openai_api_key=openai_api_key,
+        openai_api_base="https://openrouter.ai/api/v1",
+        model_name=model_name
+    )
+
+# ---------- DeepSeek ----------
+def init_deepseek():
+    client = OpenAI(
+        api_key=deepseek_api_key,
+        base_url="https://api.deepseek.com"
+    )
+    return client
+
+# ---------- Gemini ----------
+def init_gemini(model_name="gemini-1.5-flash"):
+    genai.configure(api_key=google_api_key)
+    model = genai.GenerativeModel(model_name)
+    return model
+
+def get_all_models():
+    return {
+        "GPT-4o":init_chatgpt_openrouter(),
+        "Claude 3 Sonnet": init_claude_openrouter(),
+        "Deepseek": init_deepseek(),
+        "Gemini": init_gemini()
     }
-    call_model = init_chat_model(model='deepseek/deepseek-chat-v3-0324:free', model_provider='openai', **connection_parameters)
-
-def call_chatgpt():
-
-def call_gemini():
-
-#api conexion
-openai_api_key = os.getenv('OPENROUTER_API_KEY')
-
-if openai_api_key is None:
-    raise ValueError("La variable de entorno 'OPENROUTER_API_KEY' no está configurada.")
-
-my_connection = {
-    'openai_api_base': 'https://openrouter.ai/api/v1',
-    'openai_api_key': openai_api_key
-}
-
-modelo1 = init_chat_model(model='deepseek/deepseek-chat-v3-0324:free', model_provider='openai', **my_connection)
-modelo2 = init_chat_model(model='openai/chatgpt-4o-latest', model_provider='openai', **my_connection)
-modelo3 = init_chat_model(model='google/gemini-2.5-flash', model_provider='openai', **my_connection)
-
-modelos_a_evaluar = [
-    {'name': 'Modelo 1 (Deepseek V3)', 'instance': modelo1},
-    {'name': 'Modelo 2 (GPT 4o)', 'instance': modelo2},
-    {'name': 'Modelo 3 (Gemini 2.5)', 'instance': modelo3},
-]
-#aqui van a ir los data sets
-evaluation_prompts = []
-
-all_models_responses = {
-    model_info['name']: [] for model_info in modelos_a_evaluar
-}
-def invoque_evals(model_name,model_instance):
-    for prompt in evaluation_prompts:
-        response = model_instance.invoke([prompt])
-
-        dict_responses = {
-                'prompt': prompt.content, 
-                'response': response.content,
-                'completion_tokens': response.response_metadata.get('token_usage', {}).get('completion_tokens', 'N/A')
-            }
-        all_models_responses[model_name].append(dict_responses)
-        print(f"  - Prompt procesado para {model_name}")

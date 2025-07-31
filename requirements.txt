@@ -1,0 +1,10 @@
+langchain
+langchain-core
+openai
+google-generativeai
+python-dotenv
+pandas
+jupyter
+langchain_community
+langchain-openai
+matplotlib
