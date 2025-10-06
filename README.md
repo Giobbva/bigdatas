@@ -277,8 +277,3 @@ This project is released under the **MIT License**. See the `LICENSE` file for f
   - Jason Maximiliano Pinelo Hau (Mentor)
   - OpenRouter, Google Generative AI, and DeepSeek teams for API access
   - The open-source community for LangChain and other Python libraries.
-
-<!-- end list -->
-
-```
-```
