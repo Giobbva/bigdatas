@@ -1,7 +1,6 @@
-````markdown
 # 🧠 Benchmarking Token Contamination in AI Agents
 
-**Datathon EA UPY 2025 — July Edition** **Polytechnic University of Yucatán**
+**Datathon EA UPY 2025 — July Edition** **Universidad Politécnica de Yucatán**
 
 ---
 
@@ -233,7 +232,7 @@ Reusing model outputs in training can amplify biases and artifacts. This benchma
 
 ## 🤝 Contributors
 
-  - **Giovanni Rafael Soriano Pacheco** (maintainer)
+  - **Giovanni Rafael Soriano Pacheco** (maintainer) - [Giobbva](https://github.com/Giobbva)
   - Cesar Antonio Pinto May
   - Suny Ricarte Ramirez Perez
 
@@ -246,8 +245,8 @@ Reusing model outputs in training can amplify biases and artifacts. This benchma
 If you build on this repository, please cite:
 
 ```
-Giobbva. Benchmarking Token Contamination in AI Agents.
-Datathon EA UPY 2025 — Polytechnic University of Yucatán, 2025.
+Giovanni Rafael Soriano Pacheco. Benchmarking Token Contamination in AI Agents.
+Datathon EA UPY 2025 — Universidad Politécnica de Yucatán, 2025.
 [https://github.com/Giobbva/bigdatas](https://github.com/Giobbva/bigdatas)
 ```
 
@@ -256,9 +255,9 @@ Datathon EA UPY 2025 — Polytechnic University of Yucatán, 2025.
 ```bibtex
 @misc{giobbva2025tokencontamination,
   title  = {Benchmarking Token Contamination in AI Agents},
-  author = {Giobbva},
+  author = {Giovanni Rafael Soriano Pacheco},
   year   = {2025},
-  note   = {Datathon EA UPY 2025 — Polytechnic University of Yucatán},
+  note   = {Datathon EA UPY 2025 — Universidad Politécnica de Yucatán},
   howpublished = {\url{[https://github.com/Giobbva/bigdatas](https://github.com/Giobbva/bigdatas)}}
 }
 ```
