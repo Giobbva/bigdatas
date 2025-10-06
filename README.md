@@ -1,6 +1,7 @@
-# 🧠 Benchmarking Token Contamination in AI Agents
+# 🧠 AI Contamination Benchmark
 
-**Datathon EA UPY 2025 — July Edition** **Universidad Politécnica de Yucatán**
+**Datathon EA UPY 2025 — July Edition**
+**Universidad Politécnica de Yucatán**
 
 ---
 
@@ -82,7 +83,7 @@ The benchmark focuses on contamination patterns in token sequences, using the fo
 ## 📦 Repository Structure
 
 ```bash
-bigdatas/
+AI-Contamination-Benchmark/
 ├── data/
 │   ├── EA_Benchmark_Prompts_200.csv
 │   ├── evaluaciones_con_claude.csv
@@ -110,8 +111,8 @@ bigdatas/
 #### 1\. Clone the repository
 
 ```bash
-git clone [https://github.com/Giobbva/bigdatas.git](https://github.com/Giobbva/bigdatas.git)
-cd bigdatas
+git clone [https://github.com/Giobbva/AI-Contamination-Benchmark.git](https://github.com/Giobbva/AI-Contamination-Benchmark.git)
+cd AI-Contamination-Benchmark
 ```
 
 #### 2\. Environment variables
@@ -247,7 +248,7 @@ If you build on this repository, please cite:
 ```
 Giovanni Rafael Soriano Pacheco. Benchmarking Token Contamination in AI Agents.
 Datathon EA UPY 2025 — Universidad Politécnica de Yucatán, 2025.
-[https://github.com/Giobbva/bigdatas](https://github.com/Giobbva/bigdatas)
+[https://github.com/Giobbva/AI-Contamination-Benchmark](https://github.com/Giobbva/AI-Contamination-Benchmark)
 ```
 
 **BibTeX:**
@@ -258,7 +259,7 @@ Datathon EA UPY 2025 — Universidad Politécnica de Yucatán, 2025.
   author = {Giovanni Rafael Soriano Pacheco},
   year   = {2025},
   note   = {Datathon EA UPY 2025 — Universidad Politécnica de Yucatán},
-  howpublished = {\url{[https://github.com/Giobbva/bigdatas](https://github.com/Giobbva/bigdatas)}}
+  howpublished = {\url{[https://github.com/Giobbva/AI-Contamination-Benchmark](https://github.com/Giobbva/AI-Contamination-Benchmark)}}
 }
 ```
 
